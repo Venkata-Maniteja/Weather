@@ -1,0 +1,6 @@
+framework module Pods_Carrot_LCBO {
+  umbrella header "Pods-Carrot_LCBO-umbrella.h"
+
+  export *
+  module * { export * }
+}
