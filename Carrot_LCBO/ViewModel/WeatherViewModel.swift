@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WeatherViewModel: NSObject {
     
     weak var parentVc : UIViewController?
     var weatherView : WeatherView?
-    var datasource : [Weather]?
+    var datasource : [RLMWeather]?
+    var hashImg = [String:UIImage]()
     var isCelcius  = true
     
     static let shared = WeatherViewModel()
     
     func loadWeatherView(){
         
-        datasource = [Weather]()
+        datasource = [RLMWeather]()
         weatherView = WeatherView.fromNib()
         registerCell()
         
@@ -28,6 +30,20 @@ class WeatherViewModel: NSObject {
         weatherView?.cityListView.delegate = self
         weatherView?.addCityBtn.addTarget(self, action: #selector(addCityClicked), for: .touchUpInside)
         weatherView?.segmentCtrl.addTarget(self, action: #selector(segChanged), for: .valueChanged)
+        
+        //load data from db
+        datasource = WeatherManager.shared.getWeatherDataFromDB(sortBy: "name")
+        //prepare img hash
+        if let datasource = datasource{
+            for rlmWeather in datasource{
+                let img = UIImage.gifImageWithName(rlmWeather.icon)
+                self.hashImg[rlmWeather.icon] = img
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.weatherView?.cityListView.reloadData()
+        }
         
         
     }
@@ -41,6 +57,8 @@ class WeatherViewModel: NSObject {
                 
                 if let weather = weather{
                     self.datasource?.append(weather)
+                    let img = UIImage.gifImageWithName(weather.icon)
+                    self.hashImg[weather.icon] = img
                     DispatchQueue.main.async {
                         self.weatherView?.cityListView.reloadData()
                     }
@@ -61,7 +79,7 @@ class WeatherViewModel: NSObject {
         parentVc?.present(vc, animated: true, completion: nil)
     }
     
-    func showDetailView(w:Weather){
+    func showDetailView(w:RLMWeather){
         let vc = DetailViewController.init(nibName: "DetailViewController", bundle: Bundle.main)
         vc.controllerType = "weatherDetail"
         vc.detailViewModel = WeatherDetailViewModel.shared
@@ -155,17 +173,12 @@ extension WeatherViewModel : UITableViewDelegate,UITableViewDataSource{
         if let datasource = datasource{
             let weather = datasource[indexPath.row]
             
-            print(weather.background_img ?? "no img")
-            
             cell.name.text = weather.name
             cell.background.image = nil
-            cell.background.image = weather.background_img
+            cell.background.image = hashImg[weather.icon]
             
-            if let main = weather.main{
-                if let temp = main.temp{
-                    cell.temp.text = isCelcius ? toCelcius(kelvin: temp) : toFarenheit(kelvin: temp)
-                }
-            }
+            cell.temp.text = isCelcius ? toCelcius(kelvin: Double(weather.temp) ?? 0) : toFarenheit(kelvin: Double(weather.temp) ?? 0)
+            
             return cell
            // loadGif(imgV: cell.background, imgN: weather.main_weather?[0].main_type ?? "rain")
         }

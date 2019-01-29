@@ -14,6 +14,10 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //observe the network changes, andupdate user when no network is avilablble
+        startObservingNetworkChanges()
+        
 
         // Do any additional setup after loading the view.
         if let type = controllerType{

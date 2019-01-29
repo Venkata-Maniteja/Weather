@@ -12,7 +12,7 @@ class WeatherDetailViewModel: NSObject {
 
     weak var parentVc : UIViewController?
     var weatherDetailView : WeatherDetailView?
-    var weather : Weather?
+    var weather : RLMWeather?
     
     static let shared = WeatherDetailViewModel()
     
@@ -25,29 +25,17 @@ class WeatherDetailViewModel: NSObject {
     
     func updateDetailView(){
         if let weatherDetailView = weatherDetailView{
-            weatherDetailView.background.image = weather?.background_img
+            
+            weatherDetailView.background.image = UIImage.gifImageWithName(weather?.icon ?? "clear")
             weatherDetailView.name.text = weather?.name
-            weatherDetailView.main.text = weather?.main_weather?[0].main_type
-            weatherDetailView.desc.text = weather?.main_weather?[0].description
+            weatherDetailView.main.text = weather?.desc
+            weatherDetailView.desc.text = weather?.desc_detail
             
-            if let main = weather?.main{
-                if let pressure = main.pressure{
-                     weatherDetailView.pressure.text = String(pressure)
-                }
-                if let humidity = main.humidity{
-                    weatherDetailView.humidity.text = String(humidity)
-                }
-            }
+            weatherDetailView.pressure.text = weather?.pressure
+            weatherDetailView.humidity.text = weather?.humidity
             
-            if let wind = weather?.wind{
-                if let speed = wind.speed{
-                    weatherDetailView.wind_speed.text = String(speed)
-                }
-                if let degrees = wind.deg{
-                    weatherDetailView.wind_degrees.text = String(degrees)
-                }
-            }
-           
+            weatherDetailView.wind_speed.text = weather?.speed
+            weatherDetailView.wind_degrees.text = weather?.deg
             
             //weatherDetailView.temp.text = weather?.main_weather.temp
         }

@@ -29,6 +29,8 @@
 		37D86B0821FFA97B00BE4353 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D86B0621FFA97B00BE4353 /* DetailViewController.swift */; };
 		37D86B0921FFA97B00BE4353 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37D86B0721FFA97B00BE4353 /* DetailViewController.xib */; };
 		37D86B0E21FFBFCF00BE4353 /* CArrot_Weather_App.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37D86B0D21FFBFCF00BE4353 /* CArrot_Weather_App.gif */; };
+		37D86B1021FFDE8D00BE4353 /* RLMWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D86B0F21FFDE8D00BE4353 /* RLMWeather.swift */; };
+		37D86B1221FFFAD700BE4353 /* FancyReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D86B1121FFFAD700BE4353 /* FancyReachability.swift */; };
 		37E6763D21FE8659008EE320 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6763C21FE8659008EE320 /* TabViewController.swift */; };
 		37E6763F21FE9BA3008EE320 /* MovieReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6763E21FE9BA3008EE320 /* MovieReview.swift */; };
 		37E6764121FE9C2B008EE320 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6764021FE9C2B008EE320 /* HomeViewController.swift */; };
@@ -96,6 +98,8 @@
 		37D86B0621FFA97B00BE4353 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		37D86B0721FFA97B00BE4353 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		37D86B0D21FFBFCF00BE4353 /* CArrot_Weather_App.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CArrot_Weather_App.gif; sourceTree = "<group>"; };
+		37D86B0F21FFDE8D00BE4353 /* RLMWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLMWeather.swift; sourceTree = "<group>"; };
+		37D86B1121FFFAD700BE4353 /* FancyReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyReachability.swift; sourceTree = "<group>"; };
 		37E6763C21FE8659008EE320 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		37E6763E21FE9BA3008EE320 /* MovieReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieReview.swift; sourceTree = "<group>"; };
 		37E6764021FE9C2B008EE320 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -264,11 +268,13 @@
 		37ECC5A821FF6AEB006FFB8D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				37D86B1121FFFAD700BE4353 /* FancyReachability.swift */,
 				37ECC5BA21FF8391006FFB8D /* iOSDevCenters+GIF.swift */,
 				37E6763E21FE9BA3008EE320 /* MovieReview.swift */,
 				37E6764221FEC166008EE320 /* MovieReviewManager.swift */,
 				37ECC5AC21FF70E5006FFB8D /* Weather.swift */,
 				37ECC5AE21FF70ED006FFB8D /* WeatherManager.swift */,
+				37D86B0F21FFDE8D00BE4353 /* RLMWeather.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -494,12 +500,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Carrot_LCBO/Pods-Carrot_LCBO-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -565,9 +577,11 @@
 				373ACAE321FB269B00373C5D /* AppDelegate.swift in Sources */,
 				37ECC5AB21FF70BD006FFB8D /* WeatherViewModel.swift in Sources */,
 				37D86B0121FFA87100BE4353 /* WeatherDetailView.swift in Sources */,
+				37D86B1221FFFAD700BE4353 /* FancyReachability.swift in Sources */,
 				37ECC5AF21FF70ED006FFB8D /* WeatherManager.swift in Sources */,
 				37D86B0521FFA89200BE4353 /* WeatherDetailViewModel.swift in Sources */,
 				37ECC5B121FF7108006FFB8D /* WeatherView.swift in Sources */,
+				37D86B1021FFDE8D00BE4353 /* RLMWeather.swift in Sources */,
 				37D86B0821FFA97B00BE4353 /* DetailViewController.swift in Sources */,
 				37ECC5AD21FF70E5006FFB8D /* Weather.swift in Sources */,
 				373ACB1321FB26C000373C5D /* ListViewController.swift in Sources */,

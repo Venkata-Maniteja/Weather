@@ -5,47 +5,10 @@
 //  Created by Rupika Sompalli on 28/01/19.
 //  Copyright © 2019 Venkata. All rights reserved.
 //
-/*,
- "weather": [
- {
- "id": 800,
- "main": "Clear",
- "description": "clear sky",
- "icon": "01n"
- }
- ],
- "base": "stations",
- "main": {
- "temp": 275.55,
- "pressure": 1008,
- "humidity": 51,
- "temp_min": 274.15,
- "temp_max": 277.15
- },
- "visibility": 10000,
- "wind": {
- "speed": 3.1,
- "deg": 300
- },
- "clouds": {
- "all": 0
- },
- "dt": 1548696000,
- "sys": {
- "type": 1,
- "id": 1412,
- "message": 0.0031,
- "country": "GB",
- "sunrise": 1548661448,
- "sunset": 1548693814
- },
- "id": 2643743,
- "name": "London",
- "cod": 200
- }*/
+
 import UIKit
 
-struct Weather: Codable {
+struct Weather: Codable  {
     
     var coord : Coordinates?
     var main_weather : [Weather_Main]?

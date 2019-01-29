@@ -6,6 +6,8 @@ target 'Carrot_LCBO' do
   use_frameworks!
 
   # Pods for Carrot_LCBO
+  pod 'ReachabilitySwift'
+  pod 'RealmSwift'
   pod 'UICircularProgressRing'
 
   target 'Carrot_LCBOTests' do

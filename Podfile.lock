@@ -1,16 +1,30 @@
 PODS:
+  - ReachabilitySwift (4.3.0)
+  - Realm (3.12.0):
+    - Realm/Headers (= 3.12.0)
+  - Realm/Headers (3.12.0)
+  - RealmSwift (3.12.0):
+    - Realm (= 3.12.0)
   - UICircularProgressRing (4.1.0)
 
 DEPENDENCIES:
+  - ReachabilitySwift
+  - RealmSwift
   - UICircularProgressRing
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - ReachabilitySwift
+    - Realm
+    - RealmSwift
     - UICircularProgressRing
 
 SPEC CHECKSUMS:
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
+  RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
   UICircularProgressRing: 5a32c01f54474571b1e66e8fa050c0f83d6d981b
 
-PODFILE CHECKSUM: 1bd0c23df5d20a7810df568681dfb4ea64ad8f8b
+PODFILE CHECKSUM: 78af6a7f997725608173c715259da80227839b36
 
 COCOAPODS: 1.5.3
